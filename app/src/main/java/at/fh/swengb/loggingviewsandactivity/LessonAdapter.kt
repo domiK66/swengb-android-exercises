@@ -35,6 +35,11 @@ class LessonViewHolder(itemView: View, val clickListener: (lesson: Lesson) -> Un
     fun bindItem(lesson: Lesson) {
         itemView.item_lesson_name.text = lesson.name
         itemView.item_lesson_date.text = lesson.date
+        itemView.item_lesson_topic.text = lesson.topic
+        itemView.item_lesson_lecturers.text = lesson.lecturers.joinToString(", ") {it.name}
+        itemView.item_lesson_avg_rating_bar.rating = lesson.ratingAverage().toFloat()
+        itemView.item_lesson_avg_rating_value.text = lesson.ratingAverage().toString()
+        itemView.item_lesson_rating_count.text = lesson.ratings.count().toString()
         itemView.setOnClickListener {
             clickListener(lesson)
         }
