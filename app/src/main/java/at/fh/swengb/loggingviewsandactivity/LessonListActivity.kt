@@ -26,14 +26,6 @@ class LessonListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lesson_list)
-
-
-        lesson_recycler_view.layoutManager = LinearLayoutManager(this)
-        lesson_recycler_view.adapter = lessonAdapter
-
-        parseJson()
-        SleepyAsyncTask().execute()
-
         LessonRepository.lessonsList(
             success = {
                 lessonAdapter.updateList(it)
@@ -43,11 +35,15 @@ class LessonListActivity : AppCompatActivity() {
                 Toast.makeText(this,it,Toast.LENGTH_SHORT).show()
             }
         )
+        lesson_recycler_view.layoutManager = LinearLayoutManager(this)
+        lesson_recycler_view.adapter = lessonAdapter
+        // parseJson()
+        SleepyAsyncTask().execute()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == resultCode && Activity.RESULT_OK == 1){
+        if (requestCode == ADD_OR_EDIT_RATING_REQUEST && resultCode == RESULT_OK){
             LessonRepository.lessonsList(
                     success = {
                         lessonAdapter.updateList(it)
