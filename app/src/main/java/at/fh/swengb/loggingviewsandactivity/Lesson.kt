@@ -1,6 +1,8 @@
 package at.fh.swengb.loggingviewsandactivity
 
 import com.squareup.moshi.JsonClass
+import java.math.BigDecimal
+import java.math.RoundingMode
 
 @JsonClass (generateAdapter = true)
 class Lesson(
@@ -18,7 +20,7 @@ class Lesson(
             sum += idx.ratingValue
         }
         if (ratings.size == 0) return sum
-        return sum / ratings.size
+        return BigDecimal(sum / ratings.size).setScale(2, RoundingMode.HALF_EVEN).toDouble()
     }
 }
 @JsonClass (generateAdapter = true)
