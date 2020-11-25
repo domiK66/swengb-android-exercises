@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.item_lesson.view.*
 class LessonAdapter(val clickListener: (lesson: Lesson) -> Unit): RecyclerView.Adapter<LessonViewHolder>() {
 
 
-    private var lessonList = listOf<Lesson>()
+    var lessonList = listOf<Lesson>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LessonViewHolder {
         val inflater = LayoutInflater.from(parent.context)
