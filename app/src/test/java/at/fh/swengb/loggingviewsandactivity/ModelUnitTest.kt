@@ -15,7 +15,8 @@ class ModelUnitTest {
             "Unit Testing",
             LessonType.PRACTICAL,
             listOf(Lecturer("Tester")),
-            mutableListOf()
+            mutableListOf(),
+            ""
         )
         val rating: Double = lesson.ratingAverage()
 
@@ -34,7 +35,8 @@ class ModelUnitTest {
             "Unit Testing",
             LessonType.PRACTICAL,
             listOf(Lecturer("Tester")),
-            ratings.toMutableList()
+            ratings.toMutableList(),
+            ""
         )
         val rating: Double = lesson.ratingAverage()
         val correctRating: Double = ratings.map{it.ratingValue}.average()

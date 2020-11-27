@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_lesson.view.*
 
 class LessonAdapter(val clickListener: (lesson: Lesson) -> Unit): RecyclerView.Adapter<LessonViewHolder>() {
@@ -33,6 +34,7 @@ class LessonAdapter(val clickListener: (lesson: Lesson) -> Unit): RecyclerView.A
 
 class LessonViewHolder(itemView: View, val clickListener: (lesson: Lesson) -> Unit): RecyclerView.ViewHolder(itemView) {
     fun bindItem(lesson: Lesson) {
+        Glide.with(itemView).load(lesson.imageUrl).into(itemView.lessonImage)
         itemView.item_lesson_name.text = lesson.name
         itemView.item_lesson_date.text = lesson.date
         itemView.item_lesson_topic.text = lesson.topic

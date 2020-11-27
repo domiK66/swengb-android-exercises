@@ -12,5 +12,27 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.MyApp.SmallComponent</item>
+        <item name="textAppearanceHeadline5">@style/NewTextStyle</item>
+    </style>
+    <style name="ShapeAppearance.MyApp.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">10dp</item>
+
+    </style>
+    <style name="ShapeAppearance.MyApp.RoundButton" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+    <style name="ShapeAppearance.MyApp.HalfButton" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerFamilyBottomRight">cut</item>
+        <item name="cornerFamilyTopRight">cut</item>
+        <item name="cornerSize">10dp</item>
+    </style>
+
+    <style name="NewTextStyle" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textStyle">italic</item>
     </style>
 </resources>

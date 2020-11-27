@@ -4,8 +4,11 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_lesson_rating.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_rating.*
 
 class LessonRatingActivity : AppCompatActivity() {
@@ -43,6 +46,40 @@ class LessonRatingActivity : AppCompatActivity() {
 
         }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+    inline fun consume(f: () -> Unit): Boolean {
+        f()
+        return true
+    }
+    fun sharing(){
+        val sendIntent: Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT,lesson_rating_header.text)
+            type = "text/plain"
+        }
+
+        val shareIntent = Intent.createChooser(sendIntent, null)
+        startActivity(shareIntent)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            R.id.share -> consume{sharing()}
+            R.id.xyz -> consume{sharing()}
+
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+
+
+
+
+
+
     fun loadLessonDetails(lessonID: String?){
         if (lessonID == null) {
             lesson_rating_header.text = "nonamefound"

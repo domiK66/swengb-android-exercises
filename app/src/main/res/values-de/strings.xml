@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="share">Teilen</string>
+    <string name="lesson">Stunden Bewertung</string>
+    <string name="view">Ansichten</string>
+    <string name="app_name">LoggingViewsAndActivity</string>
+    <string name="rating">Bewertung</string>
+</resources>

@@ -21,7 +21,8 @@ class LessonRatingAdapterUnitTest {
             "Unit Testing",
             LessonType.PRACTICAL,
             listOf(Lecturer("Tester")),
-            mutableListOf()
+            mutableListOf(),
+            ""
         )
     }
 
