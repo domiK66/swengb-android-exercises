@@ -4,79 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:flow_horizontalGap="20dp"
+    app:flow_verticalGap="10dp"
     tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="0dp"
         android:layout_height="150dp"
-        android:layout_marginBottom="192dp"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/header_image" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.constraintlayout.helper.widget.Flow
+        android:layout_width="345dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:constraint_referenced_ids="open_views,open_rating,share_main,open_lessons"
+        app:flow_horizontalGap="20dp"
+        app:flow_maxElementsWrap="3"
+        app:flow_verticalGap="10dp"
+        app:flow_wrapMode="chain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
-        <Button
-            android:id="@+id/share_main"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/share"
-            app:shapeAppearance="@style/ShapeAppearance.MyApp.RoundButton"
-            />
+    <Button
+        android:id="@+id/open_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/rating"
+        tools:layout_editor_absoluteX="209dp"
+        tools:layout_editor_absoluteY="404dp" />
 
-        <Space
-            android:layout_width="10dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/open_views"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/view"
-            app:shapeAppearance="@style/ShapeAppearance.MyApp.HalfButton"
-            />
-
-        <Space
-            android:layout_width="10dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/open_rating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/rating"
-            />
-
-    </LinearLayout>
+    <Button
+        android:id="@+id/open_views"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/view"
+        app:shapeAppearance="@style/ShapeAppearance.MyApp.HalfButton"
+        tools:layout_editor_absoluteX="137dp"
+        tools:layout_editor_absoluteY="318dp" />
 
     <Button
         android:id="@+id/open_lessons"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:text="@string/lesson"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="128dp"
+        tools:layout_editor_absoluteY="184dp" />
+
+    <Button
+        android:id="@+id/share_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/lesson"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.023"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        />
+        android:layout_weight="1"
+        android:text="@string/share"
+        app:shapeAppearance="@style/ShapeAppearance.MyApp.RoundButton"
+        tools:layout_editor_absoluteX="140dp"
+        tools:layout_editor_absoluteY="578dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

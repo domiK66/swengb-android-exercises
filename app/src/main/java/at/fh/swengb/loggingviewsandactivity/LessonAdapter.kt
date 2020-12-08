@@ -34,7 +34,7 @@ class LessonAdapter(val clickListener: (lesson: Lesson) -> Unit): RecyclerView.A
 
 class LessonViewHolder(itemView: View, val clickListener: (lesson: Lesson) -> Unit): RecyclerView.ViewHolder(itemView) {
     fun bindItem(lesson: Lesson) {
-        Glide.with(itemView).load(lesson.imageUrl).into(itemView.lessonImage)
+        Glide.with(itemView).load(lesson.imageUrl).into(itemView.ratingImage)
         itemView.item_lesson_name.text = lesson.name
         itemView.item_lesson_date.text = lesson.date
         itemView.item_lesson_topic.text = lesson.topic

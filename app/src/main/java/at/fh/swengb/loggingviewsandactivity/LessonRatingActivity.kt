@@ -7,9 +7,10 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_lesson_rating.*
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_rating.*
+import kotlinx.android.synthetic.main.item_lesson.view.*
 
 class LessonRatingActivity : AppCompatActivity() {
 
@@ -88,11 +89,28 @@ class LessonRatingActivity : AppCompatActivity() {
         LessonRepository.lessonById(lessonID,
             success= {
                 lesson_rating_header.text = it.name
+                Glide.with(this).load(it.imageUrl).into(this.ratingImage)
+                item_rating_avg_rating_bar.rating = it.ratingAverage().toFloat()
+                item_rating_avg_rating_value.text = it.ratingAverage().toString()
+
+                val idx = findFeedback(it)
+                feedback_string.text =  it.ratings[idx].feedback
 
             },
             error = {
                 Toast.makeText(this,it,Toast.LENGTH_SHORT).show()
             }
         )
+    }
+    fun findFeedback(lesson: Lesson): Int{
+        var idx = 0
+        for (i in lesson.ratings){
+            if (lesson.ratings[idx].feedback == ""){
+                idx++
+            } else {
+                return idx
+            }
+        }
+        return idx
     }
 }
