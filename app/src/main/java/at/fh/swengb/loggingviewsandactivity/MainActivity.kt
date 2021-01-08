@@ -1,10 +1,11 @@
 package at.fh.swengb.loggingviewsandactivity
 
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -44,6 +45,22 @@ class MainActivity : AppCompatActivity() {
         open_lessons.setOnClickListener {
             val intent = Intent(this, LessonListActivity::class.java)
             startActivity(intent)
+        }
+
+        open_settings.setOnClickListener {
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
+        }
+
+        val sharedPreferences = getSharedPreferences(packageName, Context.MODE_PRIVATE)
+        val savedUsername = sharedPreferences.getString(SettingsActivity.usernamekey, null)
+        username_main.text = savedUsername
+
+        val isNightMode = sharedPreferences.getBoolean(SettingsActivity.darkmodekey, true)
+        if (isNightMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
 
     }

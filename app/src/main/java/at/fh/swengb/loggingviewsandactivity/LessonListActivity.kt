@@ -15,6 +15,7 @@ class LessonListActivity : AppCompatActivity() {
     companion object {
         val EXTRA_LESSON_ID = "LESSON_ID_EXTRA"
         val ADD_OR_EDIT_RATING_REQUEST = 1
+        val EXTRA_LESSON_NAME = "LESSON_NAME_EXTRA"
     }
     val lessonAdapter = LessonAdapter() {
         Toast.makeText(this, "Lesson with name: ${it.name} has been clicked", Toast.LENGTH_LONG).show()

@@ -7,17 +7,26 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import at.fh.swengb.loggingviewsandactivity.LessonListActivity.Companion.EXTRA_LESSON_ID
+import at.fh.swengb.loggingviewsandactivity.LessonListActivity.Companion.EXTRA_LESSON_NAME
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_lesson_rating.*
-import kotlinx.android.synthetic.main.activity_rating.*
-import kotlinx.android.synthetic.main.item_lesson.view.*
+
 
 class LessonRatingActivity : AppCompatActivity() {
-
+    private var lesson: Lesson? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lesson_rating)
         val lessonID = intent.getStringExtra(LessonListActivity.EXTRA_LESSON_ID)
+
+        lessonnode_button.setOnClickListener {
+            val intent = Intent(this, LessonNoteActivity::class.java)
+            intent.putExtra(EXTRA_LESSON_ID, lesson?.id)
+            intent.putExtra(EXTRA_LESSON_NAME, lesson?.name)
+            startActivity(intent)
+        }
+
 
         loadLessonDetails(lessonID)
         /*
@@ -95,7 +104,7 @@ class LessonRatingActivity : AppCompatActivity() {
 
                 val idx = findFeedback(it)
                 feedback_string.text =  it.ratings[idx].feedback
-
+                lesson = it
             },
             error = {
                 Toast.makeText(this,it,Toast.LENGTH_SHORT).show()
