@@ -7,7 +7,7 @@ import at.fh.swengb.loggingviewsandactivity.LessonListActivity.Companion.EXTRA_L
 import kotlinx.android.synthetic.main.activity_lesson_note.*
 
 
-class LessonNoteActivity : AppCompatActivity() {
+class  LessonNoteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lesson_note)
