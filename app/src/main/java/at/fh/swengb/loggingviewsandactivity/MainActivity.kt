@@ -52,6 +52,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        open_viewmodel.setOnClickListener {
+            val intent = Intent(this, ViewModelActivity::class.java)
+            startActivity(intent)
+        }
+
         val sharedPreferences = getSharedPreferences(packageName, Context.MODE_PRIVATE)
         val savedUsername = sharedPreferences.getString(SettingsActivity.usernamekey, null)
         username_main.text = savedUsername

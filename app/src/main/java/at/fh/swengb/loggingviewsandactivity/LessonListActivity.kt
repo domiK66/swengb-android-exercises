@@ -6,12 +6,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.squareup.moshi.Moshi
 import kotlinx.android.synthetic.main.activity_lesson_list.*
 import kotlinx.android.synthetic.main.activity_rating.*
 
 class LessonListActivity : AppCompatActivity() {
+    val model: LessonListViewModel by viewModels()
     companion object {
         val EXTRA_LESSON_ID = "LESSON_ID_EXTRA"
         val ADD_OR_EDIT_RATING_REQUEST = 1
@@ -27,6 +29,7 @@ class LessonListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lesson_list)
+        /*
         LessonRepository.lessonsList(
             success = {
                 lessonAdapter.updateList(it)
@@ -35,24 +38,29 @@ class LessonListActivity : AppCompatActivity() {
             error = {
                 Toast.makeText(this,it,Toast.LENGTH_SHORT).show()
             }
-        )
+        )*/
+        model.lessons.observe(this) {
+            when (it) {
+                is NetworkResult.Success -> {
+                    lessonAdapter.updateList(it.value)
+                }
+                is NetworkResult.Error -> {
+                    Toast.makeText(this, it.errorMessage, Toast.LENGTH_SHORT).show()
+                    finish()
+                }
+            }
+        }
         lesson_recycler_view.layoutManager = LinearLayoutManager(this)
         lesson_recycler_view.adapter = lessonAdapter
         // parseJson()
         SleepyAsyncTask().execute()
+        model.refresh()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == ADD_OR_EDIT_RATING_REQUEST && resultCode == RESULT_OK){
-            LessonRepository.lessonsList(
-                    success = {
-                        lessonAdapter.updateList(it)
-                    },
-                    error = {
-                        Toast.makeText(this,it,Toast.LENGTH_SHORT).show()
-                    }
-            )
+            model.refresh()
         }
     }
 

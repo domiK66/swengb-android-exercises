@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LoggingViewsAndActivity">
-        <activity android:name=".LessonNoteActivity"></activity>
+        <activity android:name=".ViewModelActivity"></activity>
+        <activity android:name=".LessonNoteActivity" />
         <activity android:name=".SettingsActivity" />
         <activity
             android:name=".LessonListActivity"

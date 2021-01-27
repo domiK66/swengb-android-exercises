@@ -31,9 +31,19 @@
         android:id="@+id/node_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="156dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="176dp"
         android:text="Save"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lesson_note_text_view" />
+
+    <TextView
+        android:id="@+id/lesson_note_text_view"
+        android:layout_width="64dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="128dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_multiline" />
 </androidx.constraintlayout.widget.ConstraintLayout>

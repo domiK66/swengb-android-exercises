@@ -23,7 +23,7 @@
         android:layout_width="345dp"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
-        app:constraint_referenced_ids="open_views,open_rating,share_main,open_lessons,open_settings"
+        app:constraint_referenced_ids="open_views,open_rating,share_main,open_lessons,open_settings,open_viewmodel"
         app:flow_horizontalGap="20dp"
         app:flow_maxElementsWrap="3"
         app:flow_verticalGap="10dp"
@@ -77,6 +77,16 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="open_settings"
+        app:shapeAppearance="@style/ShapeAppearance.MyApp.RoundButton"
+        tools:layout_editor_absoluteX="140dp"
+        tools:layout_editor_absoluteY="578dp" />
+
+    <Button
+        android:id="@+id/open_viewmodel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="open_viewmodel"
         app:shapeAppearance="@style/ShapeAppearance.MyApp.RoundButton"
         tools:layout_editor_absoluteX="140dp"
         tools:layout_editor_absoluteY="578dp" />
